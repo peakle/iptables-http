@@ -1,14 +1,8 @@
 # for execute `sudo iptables-restore 'this file'`
 *nat
-<<<<<<< HEAD
-:PREROUTING ACCEPT [1:444]
-:POSTROUTING ACCEPT [0:0]
-:OUTPUT ACCEPT [8000:44596]
-=======
 :PREROUTING ACCEPT [1:443]
 :POSTROUTING ACCEPT [0:0]
 :OUTPUT ACCEPT [8080:8443]
->>>>>>> 9719262c0b6885d6d38c48727ec07b6d6ec681fa
 -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8443
 COMMIT
