@@ -1,10 +1,10 @@
 # for execute `sudo iptables-restore 'this file'`
 *nat
-:PREROUTING ACCEPT [1:8081]
+:PREROUTING ACCEPT [1:444]
 :POSTROUTING ACCEPT [0:0]
-:OUTPUT ACCEPT [443:44596]
--A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 443
--A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8080
+:OUTPUT ACCEPT [8000:44596]
+-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+-A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8443
 COMMIT
 
 *mangle
@@ -19,7 +19,7 @@ COMMIT
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
--A INPUT -p tcp -m tcp -m multiport --dports 80,443,22,8080 -j ACCEPT
+-A INPUT -p tcp -m tcp -m multiport --dports 80,443,22,8080,8443 -j ACCEPT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -j DROP
