@@ -19,7 +19,7 @@ COMMIT
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
--A INPUT -p tcp -m tcp -m multiport --dports 80,443,22,8080,8443 -j ACCEPT
+-A INPUT -p tcp -m tcp -m multiport --dports 21,80,443,22,8080,8443 -j ACCEPT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -j DROP
